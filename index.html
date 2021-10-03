@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@600&display=swap" rel="stylesheet">
+  <title>Frontend Mentor | Rock, Paper, Scissors</title>
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="responsive-message">Please use a different gadget.</div>
+  <div class="score-card">
+    <div class="logo-div">
+      <img id="logo-image" class="logo" width="70" height="50" src="images/logo.svg"/>
+    </div>
+    <div class="score">
+      <p>SCORE</p>
+      <h1 id="score-board">0</h1>
+    </div>
+  </div>
+  <div class="game-playground" id="game-playground-3objects">
+    <div class="triangle-div">
+      <img class="triangle" id="triangle" src="images/bg-triangle.svg"/>
+    </div>
+    <div class="rock-div">
+      <img class="rock" id="rock" onclick="chosenObject('rock')" src="images/icon-rock.svg"/>
+    </div>
+    <div class="paper-div">
+      <img class="paper" id="paper" onclick="chosenObject('paper')" src="images/icon-paper.svg"/>
+    </div>
+    <div class="scissors-div">
+      <img class="scissors" id="scissors" onclick="chosenObject('scissors')" src="images/icon-scissors.svg"/>
+    </div>
+    <!--<div class="your-object-div" id="your-object-div">
+      <h1>YOU PICKED</h1><br><br>
+    </div>
+    <h1 id="result">YOU LOST</h1>
+    <div><button id="play-again" onclick="playAgain()">PLAY AGAIN</button></div>
+    <div class="house-object-div" id="house-object-div">
+      <h1>THE HOUSE PICKED</h1><br><br>
+    </div>-->
+  </div>
+  <div class="game-playground" id="game-playground-5objects">
+    <div class="pentagon-div">
+      <img class="pentagon" id="pentagon" src="images/bg-pentagon.svg"/>
+    </div>
+    <div class="rock-div-5">
+      <img class="rock" id="rock5" onclick="chosenObject('rock')" src="images/icon-rock.svg"/>
+    </div>
+    <div class="paper-div-5">
+      <img class="paper" id="paper5" onclick="chosenObject('paper')" src="images/icon-paper.svg"/>
+    </div>
+    <div class="scissors-div-5">
+      <img class="scissors" id="scissors5" onclick="chosenObject('scissors')" src="images/icon-scissors.svg"/>
+    </div>
+    <div class="spock-div-5">
+      <img class="spock" id="spock5" onclick="chosenObject('spock')" src="images/icon-spock.svg"/>
+    </div>
+    <div class="lizard-div-5">
+      <img class="lizard" id="lizard5" onclick="chosenObject('lizard')" src="images/icon-lizard.svg"/>
+    </div>
+  </div>
+  <div class="your-object-div" id="your-object-div">
+      <h1>YOU PICKED</h1><br><br>
+    </div>
+    <h1 id="result">YOU LOST</h1>
+    <div><button id="play-again" onclick="playAgain()">PLAY AGAIN</button></div>
+    <div class="house-object-div" id="house-object-div">
+      <h1>THE HOUSE PICKED</h1><br><br>
+    </div>
+  <!--<footer><div id="object-select"><button onclick = "changeGame(3)">3</button><button onclick = "changeGame(5)">5</button></div><button id="rules">RULES</button></footer>-->
+
+   <!--Score
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>-->
+</body>
+  <script>
+    let score = 0;
+    let objectArray3 = [ 'rock', 'paper', 'scissors' ]
+    let objectArray5 = [ 'rock', 'paper', 'scissors', 'lizard', 'spock' ]
+    let yourObject = '';
+    let houseObject = '';
+    let activeGame = 3;
+
+    function changeGame(newGame) {
+      if(newGame !== activeGame) {
+        console.log('game-playground-'+activeGame+'objects')
+        document.getElementById('game-playground-'+activeGame+'objects').style.display = 'none'
+        document.getElementById('game-playground-'+newGame+'objects').style.display = 'block'
+        activeGame = newGame;
+        if(activeGame === 3)
+          document.getElementById('logo-image').src = 'images/logo.svg'
+        else
+          document.getElementById('logo-image').src = 'images/logo-bonus.svg'
+      }
+    }
+
+    function chosenObject(object) {
+      yourObject = object;
+      if(activeGame === 3) {
+        houseObject = objectArray3[Math.floor(Math.random() * 3)]
+        document.getElementById('rock').style.transformOrigin = 'center';
+        document.getElementById('rock').style.transform = 'scale(0)';
+        document.getElementById('rock').style.transition = 'all 0.5s ease';
+        document.getElementById('paper').style.transformOrigin = 'center';
+        document.getElementById('paper').style.transform = 'scale(0)';
+        document.getElementById('paper').style.transition = 'all 0.5s ease';
+        document.getElementById('scissors').style.transformOrigin = 'center';
+        document.getElementById('scissors').style.transform = 'scale(0)';
+        document.getElementById('scissors').style.transition = 'all 0.5s ease';
+        document.getElementById('triangle').style.transformOrigin = 'center';
+        document.getElementById('triangle').style.transform = 'scale(0)';
+        document.getElementById('triangle').style.transition = 'all 0.5s ease';
+      } else {
+        houseObject = objectArray5[Math.floor(Math.random() * 3)]
+        document.getElementById('rock5').style.transformOrigin = 'center';
+        document.getElementById('rock5').style.transform = 'scale(0)';
+        document.getElementById('rock5').style.transition = 'all 0.5s ease';
+        document.getElementById('paper5').style.transformOrigin = 'center';
+        document.getElementById('paper5').style.transform = 'scale(0)';
+        document.getElementById('paper5').style.transition = 'all 0.5s ease';
+        document.getElementById('scissors5').style.transformOrigin = 'center';
+        document.getElementById('scissors5').style.transform = 'scale(0)';
+        document.getElementById('scissors5').style.transition = 'all 0.5s ease';
+        document.getElementById('lizard5').style.transformOrigin = 'center';
+        document.getElementById('lizard5').style.transform = 'scale(0)';
+        document.getElementById('lizard5').style.transition = 'all 0.5s ease';
+        document.getElementById('spock5').style.transformOrigin = 'center';
+        document.getElementById('spock5').style.transform = 'scale(0)';
+        document.getElementById('spock5').style.transition = 'all 0.5s ease';
+        document.getElementById('pentagon').style.transformOrigin = 'center';
+        document.getElementById('pentagon').style.transform = 'scale(0)';
+        document.getElementById('pentagon').style.transition = 'all 0.5s ease';
+      }
+
+      setTimeout(() => {
+        let yourImage = document.createElement('img');
+        yourImage.className = yourObject
+        yourImage.id = 'yourObjectImg'
+        yourImage.src = "images/icon-"+ yourObject +".svg";
+        let houseImage = document.createElement('img');
+        houseImage.className = houseObject
+        houseImage.id = 'houseObjectImg'
+        houseImage.src = "images/icon-"+ houseObject +".svg";
+        document.getElementById('your-object-div').appendChild(yourImage);
+        document.getElementById('house-object-div').appendChild(houseImage);
+        document.getElementById('your-object-div').style.display = 'block';
+        document.getElementById('house-object-div').style.display = 'block';
+        document.getElementById('your-object-div').style.animation = 'yourObjectAnimation ease 0.5s 3s forwards';
+        document.getElementById('house-object-div').style.animation = 'houseObjectAnimation ease 0.5s 3s forwards';
+
+        setTimeout(() => result(yourObject, houseObject), 3000)
+
+      }, 500)
+    }
+
+    function result(yourObject, homeObject) {
+      if(yourObject === homeObject)
+        document.getElementById('result').textContent = 'YOU TIED'
+      else {
+        if(yourObject === 'rock' && (homeObject === 'scissors' || homeObject === 'lizard')) {
+          document.getElementById('result').textContent = 'YOU WIN'
+          score++
+          document.getElementById('score-board').textContent = score
+        } else if(yourObject === 'paper' && (homeObject === 'rock' || homeObject === 'spock')) {
+          document.getElementById('result').textContent = 'YOU WIN'
+          score++
+          document.getElementById('score-board').textContent = score
+        } else if(yourObject === 'scissors' && (homeObject === 'paper' || homeObject === 'lizard')) {
+          document.getElementById('result').textContent = 'YOU WIN'
+          score++
+          document.getElementById('score-board').textContent = score
+        } else if(yourObject === 'lizard' && (homeObject === 'paper' || homeObject === 'spock')) {
+          document.getElementById('result').textContent = 'YOU WIN'
+          score++
+          document.getElementById('score-board').textContent = score
+        } else if(yourObject === 'spock' && (homeObject === 'rock' || homeObject === 'scissors')) {
+          document.getElementById('result').textContent = 'YOU WIN'
+          score++
+          document.getElementById('score-board').textContent = score
+        }
+        else
+          document.getElementById('result').textContent = 'YOU LOST'
+      }
+      document.getElementById('result').style.transform = 'scale(1)'
+      document.getElementById('play-again').style.transform = 'scale(1)'
+    }
+
+    function playAgain() {
+      yourObject = ''
+      houseObject = ''
+
+      if(activeGame === 3) {
+        document.getElementById('rock').style.transform = 'scale(1)';
+        document.getElementById('paper').style.transform = 'scale(1)';
+        document.getElementById('scissors').style.transform = 'scale(1)';
+        document.getElementById('triangle').style.transform = 'scale(1)';
+      } else {
+        document.getElementById('rock5').style.transform = 'scale(1)';
+        document.getElementById('paper5').style.transform = 'scale(1)';
+        document.getElementById('scissors5').style.transform = 'scale(1)';
+        document.getElementById('lizard5').style.transform = 'scale(1)';
+        document.getElementById('spock5').style.transform = 'scale(1)';
+        document.getElementById('pentagon').style.transform = 'scale(1)';
+      }
+      document.getElementById('your-object-div').style.display = 'none';
+      document.getElementById('house-object-div').style.display = 'none';
+      document.getElementById('your-object-div').removeChild(document.getElementById('yourObjectImg'));
+      document.getElementById('house-object-div').removeChild(document.getElementById('houseObjectImg'));
+      document.getElementById('result').style.transform = 'scale(0)'
+      document.getElementById('play-again').style.transform = 'scale(0)'
+    }
+  </script>
+</html>

@@ -1,0 +1,401 @@
+body { 
+    margin: 0; 
+    height: 100vh;
+    width: 100vw;
+    /* overflow: hidden; */
+    font-family: 'Barlow', sans-serif;
+    background: radial-gradient(at top, hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+}
+
+.responsive-message { display: none; }
+
+.score-card {
+    height: 15vh;
+    width: 50vw;
+    position: absolute;
+    top: 5vh;
+    left: 25vw;
+    padding: 2vh;
+    z-index: 2;
+    border: 2px solid hsl(217, 16%, 45%);
+    border-radius: 10px;
+}
+
+.logo-div {
+    padding-left: 2vh;
+    display: inline-block;
+}
+
+.logo {
+    height: 16vh;
+    width: 10vw;
+    margin: 0;
+}
+
+.score {
+    float: right;
+    height: 100%;
+    width: 12vw;
+    text-align: center;
+    color: hsl(229, 25%, 31%);
+    background-color: white;
+    border-radius: 10px;
+}
+
+.score p {
+    letter-spacing: 5px;
+    margin-bottom: 0;
+    font-family: 'Barlow', sans-serif;
+}
+
+.score h1 {
+    font-size: 8vh;
+    margin: 0;
+    font-family: 'Barlow', sans-serif;
+}
+
+.game-playground {
+    width: 100vw;
+    height: 70vh;
+    position: relative;
+    top: 20vh;
+    /* background-color: aqua; */
+}
+
+.triangle-div, .pentagon-div {
+    position: absolute;
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.triangle.pentagon {
+    height: 35vh;
+}
+
+.rock-div, .paper-div, .scissors-div {
+    position: absolute;
+    left: 45vw;
+    top: 10vh;
+    /* width: 100vw;
+    height: 100%; */
+    /* display: flex; */
+    cursor: pointer;
+    /* justify-content: center;
+    align-items: center; */
+}
+
+.rock-div .rock, .paper-div .paper, .scissors-div .scissors {
+    width: 5vw;
+    height: 5vw;
+    padding: 3vh;
+    position: absolute;
+}
+
+.rock {
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    border: 15px solid hsl(349, 70%, 56%);
+    transform-origin: center;
+    transform: scale(1);
+    transform-origin: center;
+    transition: all 0.5s ease;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(349, 71%, 52%);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(349, 71%, 52%);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(349, 71%, 52%);
+}
+
+.rock-div .rock {
+    top: 35vh;
+}
+
+.paper {
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    border: 15px solid hsl(230, 89%, 65%);
+    transform-origin: center;
+    transform: scale(1);
+    transition: all 0.5s ease;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(230, 89%, 62%);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(230, 89%, 62%);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(230, 89%, 62%);
+}
+
+.paper-div .paper {
+    left: -10vw;
+}
+
+.scissors {
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    border: 15px solid hsl(40, 84%, 53%);
+    transform-origin: center;
+    transform: scale(1);
+    transition: all 0.5s ease;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(39, 89%, 49%);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(39, 89%, 49%);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(39, 89%, 49%);
+}
+
+.scissors-div .scissors {
+    left: 10vw;
+}
+
+.rock-div .rock:hover, .paper-div .paper:hover, .scissors-div .scissors:hover, .rock-div-5 .rock:hover, .paper-div-5 .paper:hover, .scissors-div-5 .scissors:hover, .lizard-div-5 .lizard, .spock-div-5 .spock {
+    transform: scale(1.1);
+}
+
+.your-object-div {
+    display: none;
+    position: absolute;
+    top: 27vh;
+    left: 15vw;
+}
+
+.your-object-div h1, .house-object-div h1  {
+    text-align: center;
+    color: white;
+}
+
+.your-object-div .rock, .your-object-div .paper, .your-object-div .scissors, .your-object-div .lizard, .your-object-div .spock {
+    width: 10vw;
+    height: 10vw;
+    padding: 10vh;
+    transition: all 0.5s ease;
+}
+
+@keyframes yourObjectAnimation {
+    100% { transform: translateX(-7vw) }
+}
+
+.your-object-div .rock {
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(349, 71%, 52%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(349, 71%, 52%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(349, 71%, 52%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+} 
+
+.your-object-div .paper {
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(230, 89%, 62%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(230, 89%, 62%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(230, 89%, 62%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+} 
+
+.your-object-div .scissors {
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(39, 89%, 49%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(39, 89%, 49%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(39, 89%, 49%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+}
+
+.your-object-div .spock {
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(189, 59%, 53%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(189, 59%, 53%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(189, 59%, 53%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+}
+
+.your-object-div .lizard {
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(261, 73%, 60%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(261, 73%, 60%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(261, 73%, 60%), 0px 0px 0px 50px rgba(255,255,255,0.1), 0px 0px 0px 100px rgba(255,255,255,0.05), 0px 0px 0px 150px rgba(255,255,255,0.01);
+}
+
+.house-object-div {
+    display: none;
+    position: absolute;
+    top: 27vh;
+    right: 15vw;
+}
+
+.house-object-div .rock, .house-object-div .paper, .house-object-div .scissors, .house-object-div .lizard, .house-object-div .spock {
+    width: 10vw;
+    height: 10vw;
+    padding: 10vh;
+}
+
+@keyframes houseObjectAnimation {
+    100% { transform: translateX(7vw) }
+}
+
+#result {
+    position: relative;
+    font-size: 6vh;
+    color: white;
+    margin-top: -15vh;
+    /* padding-top: 30vh; */
+    transition: all ease 0.5s;
+    transform: scale(0);
+    text-align: center;
+}
+
+#play-again {
+    margin: 2vh 42.5%;
+    width: 15%;
+    padding: 1.5vh 0;
+    border-radius: 5px;
+    border: 0;
+    letter-spacing: 0px;
+    cursor: pointer;
+    font-weight: 400;
+    transition: all ease 0.5s;
+    transform: scale(0);
+    color: hsl(214, 47%, 23%);
+}
+
+#play-again:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+#game-playground-5objects {
+    display: none;
+}
+
+.rock-div-5, .paper-div-5, .scissors-div-5, .spock-div-5, .lizard-div-5 {
+    position: absolute;
+    left: 45vw;
+    top: 7vh;
+    cursor: pointer;
+}
+
+.rock-div-5 .rock, .paper-div-5 .paper, .scissors-div-5 .scissors, .spock-div-5 .spock, .lizard-div-5 .lizard {
+    width: 5vw;
+    height: 5vw;
+    padding: 3vh;
+    position: absolute;
+}
+
+.spock {
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    border: 15px solid hsl(189, 58%, 57%);
+    transform-origin: center;
+    transform: scale(1);
+    transition: all 0.5s ease;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(189, 58%, 57%);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(189, 58%, 57%);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(189, 58%, 57%);
+}
+
+.lizard {
+    display: block;
+    border-radius: 50%;
+    background-color: white;
+    border: 15px solid hsl(261, 72%, 63%);
+    transform-origin: center;
+    transform: scale(1);
+    transition: all 0.5s ease;
+    box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(261, 73%, 60%);
+    -webkit-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(261, 73%, 60%);
+    -moz-box-shadow: 0px 5px 5px 0px rgba(0,0,0,0.25) inset, 0px 5px 0px 0px hsl(261, 73%, 60%);
+}
+
+.paper-div-5 .paper {
+    top: 13vh;
+    left: 11vw;
+}
+
+.rock-div-5 .rock {
+    top: 35vh;
+    left: 7vw;
+}
+
+.lizard-div-5 .lizard {
+    top: 35vh;
+    left: -7vw;
+}
+
+.spock-div-5 .spock {
+    top: 13vh;
+    left: -11vw;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 7vh;
+    width: 100vw;
+}
+
+#object-select {
+    display: inline-block;
+    margin: 0;
+    width: 120px;
+    padding: 0vh;
+    margin-left: 3vh;
+    letter-spacing: 2px;
+}
+
+#object-select button:first-of-type {
+    padding: 1vh;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    cursor: pointer;
+}
+
+#object-select button:last-of-type {
+    padding: 1vh;
+    color: hsl(214, 47%, 23%);
+    background-color: white;
+    border: 1px solid white;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    cursor: pointer;
+}
+
+#object-select button {
+    width: 50%;
+    border: 0;
+    height: 100%;
+}
+
+#rules {
+    float: right;
+    width: 120px;
+    padding: 1vh;
+    margin-right: 3vh;
+    border-radius: 5px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-family: 'Barlow', sans-serif;
+    color: white;
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+
+@media screen and (max-width: 1150px ), screen and (min-height: 1250px) {
+    .responsive-message {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    .score-card { display: none; }
+    .game-playground { display: none; }
+    .your-object-div { display: none; }
+}
+
+@media screen and (min-width: 2150px ), screen and (max-height: 650px) {
+    .responsive-message {
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+    }
+    .score-card { display: none; }
+    .game-playground { display: none; }
+    .your-object-div { display: none; }
+}
